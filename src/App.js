@@ -1,11 +1,9 @@
-import logo from './logo.svg';
+
 import './App.css';
 import AppMarket from './marketComps/appMarket';
-import PhpComp from './test/phpComp';
+
 import { useEffect } from 'react';
-import LazyLoading from './test/lazyLoading';
-import LoadMoreLazy from './test/loadMoreLazy';
-import OwnHookComp from './test/ownHookComp';
+
 
 
 function App() {

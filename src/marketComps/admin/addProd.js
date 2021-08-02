@@ -15,12 +15,14 @@ function AddProd(props) {
   
   let fileRef = useRef()
   let nameRef = register({ required: true, minLength: 3 });
-  let infoRef = register({ required: true, minLength: 3 });
+  let infoRef = register({});
   let priceRef = register({ required: true, min: 1 });
   let imageRef = register({});
   let qtyRef = register({ required: true, min: 1 });
-  let commentsRef = register({ minLength: 1 }); 
+  let commentsRef = register({ });
   let catRef = register({ required: true });
+
+  let typeRef= register({});
   
   useEffect(() => {
     doApiGetCat();
@@ -101,19 +103,19 @@ function AddProd(props) {
         <h1>Add new Product</h1>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">name</label>
-          <input defaultValue="pizza" ref={nameRef} name="name" type="text" className="form-control" id="name" />
+          <input  ref={nameRef} name="name" type="text" className="form-control" id="name" />
           {errors.name && <span className="text-danger">Enter vaild name (at least 2 charts)</span>}
         </div>
 
         <div className="mb-3">
           <label htmlFor="info" className="form-label">info</label>
-          <input defaultValue="bla bla" ref={infoRef} name="info" type="text" className="form-control" id="info" />
+          <input  ref={infoRef} name="info" type="text" className="form-control" id="info" />
           {errors.info && <span className="text-danger">Enter info (at least 2 charts)</span>}
         </div>
 
         <div className="mb-3">
           <label htmlFor="price" className="form-label">Price:</label>
-          <input defaultValue="5" ref={priceRef} name="price" type="text" className="form-control" id="price" />
+          <input  ref={priceRef} name="price" type="text" className="form-control" id="price" />
           {errors.price && <span className="text-danger">Enter valid price higer than 0</span>}
         </div>
         <div className="mb-3">
@@ -126,12 +128,12 @@ function AddProd(props) {
         </div>
         <div className="mb-3">
           <label htmlFor="qty" className="form-label">QTY:</label>
-          <input defaultValue="4" ref={qtyRef} name="qty" type="number" className="form-control" id="qty" />
+          <input ref={qtyRef} name="qty" type="number" className="form-control" id="qty" />
           {errors.qty && <span className="text-danger">Enter valid qty higer than 0</span>}
         </div>
         <div className="mb-3">
           <label htmlFor="comments" className="form-label">Comments:</label>
-          <input defaultValue="bla bla 222" ref={commentsRef} name="comments" type="text" className="form-control" id="comments" />
+          <input  ref={commentsRef} name="comments" type="text" className="form-control" id="comments" />
           {errors.comments && <span className="text-danger">Enter valid comments</span>}
         </div>
 
@@ -150,6 +152,21 @@ function AddProd(props) {
           </select>
         {errors.category_s_id && <span className="text-danger">There is problem, please wait... or click refresh</span>}
         </div>
+
+
+        <div className="mb-3">
+          <label htmlFor="category" className="form-label">type</label>
+          <select   ref={typeRef} name="type" id="type" className="form-select" >
+            <option  value={"kilogram"} >kilogram           </option>
+            <option  value={"gram"} >gram                   </option>
+            <option  value={"singularity"} >  singularity   </option>
+          </select>
+          {errors.type && <span className="text-danger">There is problem, please wait... or click refresh</span>}
+        </div>
+
+
+
+
         <button type="submit" className="btn btn-primary">Add product</button>
 
 

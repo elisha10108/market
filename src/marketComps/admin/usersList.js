@@ -79,7 +79,7 @@ function UsersList(props) {
                   <button onClick={() => {
                     delProd(item._id);
                   }} className="btn btn-danger">del</button>
-                  <a href="#" className="btn btn-dark">edit</a>
+                  <Link to={"/admin/edituser/"+item._id} className="btn btn-dark">edit</Link>
                 </td>
               </tr>
             )

@@ -58,7 +58,7 @@ function CategoryList(props) {
                   <button onClick={() => {
                     delProd(item._id);
                   }} className="btn btn-danger">del</button>
-                  <a href="#" className="btn btn-dark">edit</a>
+                  <Link to={"/admin/editcat/"+item._id} className="btn btn-dark">edit</Link>
                 </td>
               </tr>
             )

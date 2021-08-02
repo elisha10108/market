@@ -17,13 +17,13 @@ function EditProd(props) {
 
   let fileRef = useRef()
   let nameRef = register({ required: true, minLength: 3 });
-  let infoRef = register({ required: true, minLength: 3 });
+  let infoRef = register({ });
   let priceRef = register({ required: true, min: 1 });
   let imageRef = register({});
   let qtyRef = register({ required: true, min: 1 });
-  let commentsRef = register({ minLength: 1 });
+  let commentsRef = register({});
   let catRef = register({ required: true });
-
+  let typeRef =register({});
   useEffect(() => {
     doApiGetCat();
     getInfoOfProdToEdit()
@@ -146,11 +146,9 @@ function EditProd(props) {
           {errors.comments && <span className="text-danger">Enter valid comments</span>}
         </div>
 
-
-
         <div className="mb-3">
           <label htmlFor="category" className="form-label">Category</label>
-          <select defaultValue={prodData.category_s_id} ref={catRef} name="category_s_id" id="category" className="form-select" >
+          <select  ref={catRef} name="category_s_id" id="category" className="form-select" >
             {cat_ar.map(item => {
               return (
                 <option
@@ -162,6 +160,17 @@ function EditProd(props) {
             })}
           </select>
           {errors.category_s_id && <span className="text-danger">There is problem, please wait... or click refresh</span>}
+        </div>
+
+
+        <div className="mb-3">
+          <label htmlFor="category" className="form-label">Category</label>
+          <select  selected={prodData.type}  ref={typeRef} name="type" id="type" className="form-select" >
+                  <option  value={"kilogram"} >kilogram           </option>
+                  <option  value={"gram"} >gram                   </option>
+                  <option  value={"singularity"} >  singularity   </option>
+          </select>
+          {errors.type && <span className="text-danger">There is problem, please wait... or click refresh</span>}
         </div>
         <button type="submit" className="btn btn-primary">update product</button>
 

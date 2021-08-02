@@ -82,7 +82,7 @@ function Checkout(props) {
                 {carts_ar.map((item, i) => {
                   totalCart += item.count * item.price;
                   return (
-                    <tr>
+                    <tr key={i}>
                       <td>{i + 1}</td>
                       <td>{item.name}</td>
                       <td>{item.count}</td>

@@ -11,7 +11,7 @@ function AddCat(props) {
   const { register, handleSubmit, errors } = useForm();
 
   let nameRef = register({ required: true, minLength: 3 });
-  let infoRef = register({ required: true, minLength: 3 });
+  let infoRef = register({  });
   let idRef = register({ required: true, min: 1 });
 
   const onFormSub = (dataBody) => {

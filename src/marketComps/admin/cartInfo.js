@@ -33,7 +33,7 @@ function CartInfo(props) {
     let url = URL_API + "/carts/status/" + cartId;
     let data = await doApiMethod(url, "PATCH", {status:_status});
     console.log(data);
-    if(data.n == 1){
+    if(data.n === 1){
       getProductInfoApi();
     }
   }
@@ -45,9 +45,9 @@ function CartInfo(props) {
       <h1>Info about order:</h1>
       <div>
         <h3>Buyer info:</h3>
-        <div>Name: {userInfo.name}</div>
-        <div>Phone: {userInfo.phone}</div>
-        <div>Address: {userInfo.address}</div>
+        <div>Name: {userInfo?.name}</div>
+        <div>Phone: {userInfo?.phone}</div>
+        <div>Address: {userInfo?.address}</div>
       </div>
       <hr />
       <div>

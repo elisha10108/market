@@ -26,8 +26,6 @@ function EditUser(props) {
     doApiGetUser();
     getInfoOfUserToEdit()
   }, [])
-
-  // COLLECT category from db
   const doApiGetUser = async () => {
     let url = URL_API + "/users"
     let data = await doApiGet(url);
@@ -48,15 +46,13 @@ function EditUser(props) {
     console.log(dataBody);
 
     doApi(dataBody)
-    // doApi(dataBody);
   }
 
   const doApi = async (dataBody) => {
     let editId = props.match.params.id;
     let url = URL_API + "/users/" + editId;
     let data = await doApiMethod(url, "PUT", dataBody);
-    // if succed we will get n = 1
-    // console.log(data);
+
     if (data.n == 1) {
       toast.success("user updated");
       history.push("/admin/users");

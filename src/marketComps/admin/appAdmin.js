@@ -11,6 +11,8 @@ import UserList from './usersList';
 import EditProd from './editProd';
 import UserCartsOrders from './userCartsOrders';
 import CartInfo from './cartInfo';
+import EditCat from "./editCat";
+import EditUser from "./editUser";
 
 function AppAdmin(props) {
   return (
@@ -44,6 +46,9 @@ function AppAdmin(props) {
               <Route exact path={`/admin/users`} component={UserList} />
               <Route exact path={`/admin/userCarts`} component={UserCartsOrders} />
               <Route exact path={`/admin/cartInfo/:id`} component={CartInfo} />
+              <Route exact path={`/admin/editcat/:id`} component={EditCat} />
+              <Route exact path={`/admin/edituser/:id`} component={EditUser} />
+
             </Switch>
           </div>
         </div>
