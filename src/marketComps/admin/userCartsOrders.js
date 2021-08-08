@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { doApiMethod, URL_API } from '../../services/apiSer';
 
-function UserCartsOrders(props){
+function UserCartsOrders(){
   let [carts_ar,setCarts] = useState([]);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ function UserCartsOrders(props){
   const doApiGetCarts = async() => {
     let url = URL_API+"/carts/allCarts?reverse=yes";
     let data = await doApiMethod(url,"GET");
-    console.log(data)
+    // console.log(data)
     setCarts(data);
   }
 
@@ -20,13 +20,13 @@ function UserCartsOrders(props){
     switch (_status){
       case "complete":
         return "green";
-        break;
+
       case "pending":
         return "grey";
-        break;
+
       case "canceled":
         return "red";
-        break;
+
     }
   }
 
@@ -49,7 +49,7 @@ function UserCartsOrders(props){
         <tbody>
           {carts_ar.map((item,i) => {
             return(
-              <tr key={item._id}>
+              <tr key={i}>
                 <td>{i+1}</td>
                 <td>{item._id}</td>
                 <td>{JSON.parse(item.carts_ar).length}</td>

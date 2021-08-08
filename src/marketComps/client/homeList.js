@@ -1,29 +1,57 @@
 import React from 'react';
 import LazyLoad from 'react-lazyload';
 import HomeCatList from './homeCatList';
+// import {URL_API,doApiGet} from "../../services/apiSer";
 
+function Homelist() {
+  const orderCategoriesId = ["9", "1", "8"]
 
-function Homelist(props) {
-  const orderCategoriesId = ["3", "1", "2", "5"]
+    // let [catS_id,setCatS_id]=useState();
+// let data;
 
+    // useEffect(()=>{
+    //     doapi();
+    // },[])
+    //
+    // const doapi= async ()=>{
+    //     let url = URL_API+"/categories/gets_id"
+    //      data = await doApiGet(url);
+    //     console.log(data)
+    //     console.log(data[2].s_id)
+    // }
 
   return (
 
-    <div className="container-fluid">
-      <div className="container">
-        {orderCategoriesId.map(item => {
-          return (
-            <LazyLoad  key={item} height={500}>
-              <HomeCatList catId={item} />
-            </LazyLoad>
-          )
-        })}
+      <div className="container-fluid">
+          <div className="container">
+              {orderCategoriesId .map((item ,i)=> {
+                return (
+                    <LazyLoad  key={item} height={500}>
+                      <HomeCatList key={i}  catId={item} />
+                    </LazyLoad>
+                )
+              })}
 
-      
+
+          </div>
       </div>
-    </div>
 
   )
 }
 
 export default Homelist
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

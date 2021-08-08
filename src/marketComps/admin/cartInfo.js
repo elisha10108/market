@@ -14,7 +14,7 @@ function CartInfo(props) {
     let cartId = props.match.params.id;
     let url = URL_API + "/carts/singleCart/" + cartId;
     let data = await doApiMethod(url, "GET");
-    console.log(data);
+
     setCartInfo(data);
     setCartAr(JSON.parse(data.carts_ar));
     getUserInfo(data.user_id);
@@ -24,7 +24,7 @@ function CartInfo(props) {
 
     let url = URL_API + "/users/singleUser/" + userId;
     let data = await doApiMethod(url, "GET");
-    console.log(data)
+    console.log(userId)
     setUserInfo(data);
   }
 
@@ -80,7 +80,7 @@ function CartInfo(props) {
           <tbody>
             {cart_ar.map((item,i) => {
               return(
-                <tr>
+                <tr key={i}>
                   <td>{i + 1}</td>
                   <td>{item.name}</td>
                   <td>{item.count}</td>

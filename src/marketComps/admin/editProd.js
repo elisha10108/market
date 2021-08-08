@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { doApiGet, doApiMethod, URL_API } from '../../services/apiSer';
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { toast } from 'react-toastify';
 
 function EditProd(props) {
@@ -58,7 +58,7 @@ function EditProd(props) {
     let data = await doApiMethod(url, "PUT", dataBody);
     // if succed we will get n = 1
     // console.log(data);
-    if (data.n == 1) {
+    if (data.n === 1) {
       toast.success("prod updated");
       history.push("/admin/list");
     }
@@ -83,9 +83,8 @@ function EditProd(props) {
           'content-type': "multipart/form-data"
         }
       });
-      // אם הצליח נקבל 1
-      if(resp.data.n == 1){
-        // כדי שירפרש את העריכה קראנו לפוקנציה שתביא שוב את המידע על המוצר
+
+      if(resp.data.n === 1){
         getInfoOfProdToEdit()
       }
       console.log(resp.data)
@@ -124,13 +123,11 @@ function EditProd(props) {
           <input defaultValue={prodData.img} ref={imageRef} name="img" type="text" className="form-control" id="image" />
           {errors.img && <span className="text-danger">Enter valid image higer than 0</span>}
           <label>Upload image from computer</label>
-          {/* אם הקובץ מקומי צריך להוסיף את הכתובת של השרת
-          ואם זה יו אר לא  מהשרת שלנו אז אין צורך  */}
+
           {prodData.img?.includes("http") ? 
-          <img src={prodData.img} height="100" />
-          // הוספנו את הקווארי סטרינג ? כדי שירפרש את התמונה כל פעם מחדש
-          // כי שמעלים תמונה היא נשארת על אותה כתובת 
-            : <img src={URL_API+prodData.img+"?"+Date.now()} height="100" />
+          <img alt={"img"} src={prodData.img} height="100" />
+
+            : <img alt={"img"} src={URL_API+prodData.img+"?"+Date.now()} height="100" />
             }
           <br/>
           <input ref={fileRef} type="file" onChange={uploadFile} className="me-3" />
@@ -152,7 +149,7 @@ function EditProd(props) {
             {cat_ar.map(item => {
               return (
                 <option
-                  selected={(prodData.category_s_id == item.s_id)}
+                  selected={(prodData.category_s_id === item.s_id)}
                   key={item.s_id} value={item.s_id}>
                   {item.name}
                 </option>
@@ -165,7 +162,7 @@ function EditProd(props) {
 
         <div className="mb-3">
           <label htmlFor="category" className="form-label">Category</label>
-          <select  selected={prodData.type}  ref={typeRef} name="type" id="type" className="form-select" >
+          <select   ref={typeRef} name="type" id="type" className="form-select" >
                   <option  value={"kilogram"} >kilogram           </option>
                   <option  value={"gram"} >gram                   </option>
                   <option  value={"singularity"} >  singularity   </option>

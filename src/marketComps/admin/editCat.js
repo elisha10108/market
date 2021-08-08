@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
-import {  doApiGet, doApiMethod, URL_API } from '../../services/apiSer';
-import { Link, useHistory } from "react-router-dom";
+import {  doApiMethod, URL_API } from '../../services/apiSer';
+import { useHistory } from "react-router-dom";
 
 function EditCat(props) {
     let [catData, setCatData] = useState({});
@@ -23,18 +23,17 @@ function EditCat(props) {
 
     const getInfoOfCatToEdit = async () => {
         let editId = props.match.params.id;
-        //problem need to fix
+
         let url = URL_API + "/categories/single/" + editId;
         let data = await doApiMethod(url,"GET" )
         console.log(data)
         setCatData(data);
-        //console.log(data);
+
     }
 
     const onFormSub = (dataBody) => {
         console.log(dataBody);
 
-        // doApi(dataBody)
         doApi(dataBody);
     }
 
@@ -44,9 +43,8 @@ function EditCat(props) {
         let editId = props.match.params.id;
         let url = URL_API + "/categories/" + editId;
         let data = await doApiMethod(url,"PUT",dataBody);
-        // if succed we will get _id prop
-        // console.log(data);
-        if(data.n == 1){
+
+        if(data.n === 1){
             toast.success("category updated");
             history.push("/admin/category");
         }
@@ -55,7 +53,7 @@ function EditCat(props) {
         }
     }
 
-    // 15:02
+
 
     return (
         <div className="container">

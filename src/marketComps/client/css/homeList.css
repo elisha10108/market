@@ -21,3 +21,53 @@ hr.for_h2{
   background-size: cover;
   background-position: center;
 }
+/*.checkbox{*/
+/*  display: none;*/
+/*}*/
+/*.switch-btn{*/
+/*  width: 90px;*/
+/*  height: 45px;*/
+/*  background-color: #f30a0a;*/
+/*  border-radius: 50px;*/
+
+/*  position: relative;*/
+/*  display: flex;*/
+/*  align-items: center;*/
+
+/*  overflow: hidden;*/
+/*  transition: background-color 150ms;*/
+/*}*/
+
+/*.switch-btn:before{*/
+/*  width: 35px;*/
+/*  height: 35px;*/
+/*  border-radius: 50%;*/
+
+/*  position: absolute;*/
+
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+
+/*  transition: all 300ms cubic-bezier(0.18,0.89,0.35,1.15);*/
+/*}*/
+
+/*.switch-btn:before{*/
+/*  left: -50%;*/
+/*  content: "on";*/
+/*  background-color: aquamarine;*/
+/*}*/
+/*.switch-btn:after{*/
+/*  right: 15px;*/
+/*  content: "of";*/
+/*  background-color: brown;*/
+/*}*/
+/*.checkbox:checked + switch-btn:before{*/
+/*  left: 5px;*/
+/*}*/
+/*.checkbox:checked + switch-btn:after{*/
+/*  right: -50%;*/
+/*}*/
+/*.checkbox:checked + switch-btn{*/
+/*  background-color: chartreuse;*/
+/*}*/

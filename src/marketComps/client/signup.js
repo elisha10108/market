@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router';
 import { doApiMethod, URL_API } from '../../services/apiSer';
 
-function SignUp(props){
+function SignUp(){
   const { register, handleSubmit, errors } = useForm();
   let history = useHistory()
   // פונקציה בשיבל לקרוא לתצוגת ההודעות של הטוסט
@@ -32,7 +32,7 @@ function SignUp(props){
       toast.success("You sign up, log in now")
       history.push("/login");
     }
-    else if(data.code == 11000){
+    else if(data.code === 11000){
       toast.error("Email already exists in system , try log in")
 
     }

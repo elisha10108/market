@@ -6,8 +6,7 @@ function AuthAdmin(props){
   let history = useHistory()
 
   useEffect(()=> {
-    console.log("auth log")
-    // check if there token
+
     //TODO: check if already in /admin
     if(!localStorage["tok"]){
       history.push("/admin");
@@ -20,11 +19,11 @@ function AuthAdmin(props){
   const doApi = async() => {
     let url = URL_API+"/users/checkAdmin";
     let data = await doApiMethod(url,"POST",{});
-    // check if the token is valid and the user is admin
-    if(data.auth != "success"){
+
+    if(data.auth !== "success"){
       localStorage.removeItem("tok");
       history.push("/admin");
-// 13:10
+
     }
   }
 

@@ -2,9 +2,9 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import {  doApiMethod, URL_API } from '../../services/apiSer';
-import { Link, useHistory } from "react-router-dom";
+import {  useHistory } from "react-router-dom";
 
-function AddCat(props) {
+function AddCat() {
 
 
   let history = useHistory()

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect,  useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { doApiGet, URL_API } from '../../services/apiSer';
@@ -10,7 +10,7 @@ import ProdBox from './prodBox';
 function CategoryPage(props) {
   let [cat, setCat] = useState({})
   let [prods_ar, setProdsAr] = useState([])
-  let selectRef = useRef()
+
 
 
 
@@ -19,29 +19,19 @@ function CategoryPage(props) {
 
     doApi();
 
-    // props.match -  חשוב מכיוון שנרצה שהפונקציה תפעל כל פעם שיו אר אל משתנה למעלה 
   }, [props.match])
 
   const doApi = async () => {
-    // להוציא את המידע על הקטגוריה
-
     let url1 = URL_API + "/categories/single/" + props.match.params.id
     let dataCat = await doApiGet(url1)
     setCat(dataCat)
-
-    // להוציא את כל המוצרים , נניח 8 בדף
-    let currentPage = props.match.params.page || 0; 
-    // sort -> לוקח מידע מהסלקט שלנו
-    let url = URL_API + `/prods/?cat=${dataCat.s_id}&perPage=8&page=${currentPage}&sort=${selectRef.current.value}`;
+    console.log(dataCat)
+    let url = URL_API + `/prods/?cat=${dataCat.s_id}`
 
     let prodsData = await doApiGet(url);
     setProdsAr(prodsData);
-    // לעשות פג'ניישן 
   }
 
-  const onSortchange = () => {
-    doApi()
-  }
 
 
   return (
@@ -64,22 +54,13 @@ function CategoryPage(props) {
             <PageNav
               urlPageApi={"/prods/count?cat=" + cat.s_id}
               perPage="8"
-              // לאן הלינקים של הכפתורים של העמודים יקחו אותנו
               pageLinkStart={"/cat/" + cat.s_id + "/"}
-
             />
           }
           </div>
-          <div className="d-flex col-lg-6 justify-content-center justify-content-lg-end">
-            <label className="mt-1 me-2">Sort by:</label>
-            <select onChange={onSortchange} ref={selectRef} className="form-select w-50">
-              <option value="name">Name</option>
-              <option value="price">Price</option>
-              <option value="date_created">Added to the shop</option>
-            </select>
-          </div>
+
         </div>
-        {prods_ar.length == 0 && <div className="text-center"><img src="/images/loading.gif" /></div>}
+        {prods_ar.length === 0 && <div className="text-center"><img src="/public/images/loading.gif"  alt={"loading"}/></div>}
         <div className="row mb-5">
           {prods_ar.map(item => {
             return (

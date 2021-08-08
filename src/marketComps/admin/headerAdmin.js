@@ -3,14 +3,14 @@ import {Link} from "react-router-dom";
 import {useHistory} from "react-router-dom"
 
 
-function HeaderAdmin(props) {
+function HeaderAdmin() {
   let history = useHistory();
 
-  const logOut = () => { 
-    // delete localstorage
+  const logOut = () => {
     localStorage.removeItem("tok");
     history.push("/admin")
   }
+
 
   return (
     <div className="container-fluid bg-dark text-light">
@@ -25,7 +25,7 @@ function HeaderAdmin(props) {
             {localStorage["tok"] ? 
             <React.Fragment>
               
-              <Link to="#" onClick={logOut} className="text-white">Log out</Link>
+              <Link to="#" onClick={logOut} className="text-white h5">Log out</Link>
             </React.Fragment>
             : ""
           }

@@ -4,7 +4,7 @@ import { useHistory } from 'react-router';
 import { doApiMethod, URL_API } from '../../services/apiSer';
 import { toast } from 'react-toastify';
 
-function Login(props) {
+function Login() {
   const { register, handleSubmit, errors } = useForm();
   let history = useHistory()
   // פונקציה בשיבל לקרוא לתצוגת ההודעות של הטוסט

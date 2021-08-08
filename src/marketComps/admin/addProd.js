@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import {  useHistory } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { doApiGet, doApiMethod, URL_API } from '../../services/apiSer';
-function AddProd(props) {
+function AddProd() {
   let [cat_ar,setCatAr] = useState([])
 
 
@@ -83,7 +83,7 @@ function AddProd(props) {
         }
       });
       // אם הצליח נקבל 1
-      if(resp.data.n == 1){
+      if(resp.data.n === 1){
         toast.success("prod added and image uploaded");
         history.push("/admin/list");
       }

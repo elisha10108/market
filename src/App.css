@@ -1,6 +1,7 @@
 .admin_nav_side{
   background:black;
   color:white;
+
 }
 
 .admin_nav_side a {
@@ -16,25 +17,24 @@
 
 
 
-/* scroll bar */
-/* width */
+ scroll bar
+ width
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 20px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
  
-/* Handle */
+ Handle
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 
-/* 10:50 */

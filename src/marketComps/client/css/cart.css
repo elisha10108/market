@@ -16,7 +16,7 @@
   border:1px solid grey;
   transition: 1000ms;
   
-  /* overflow: scroll; */
+
  
 }
 
@@ -42,7 +42,7 @@
 }
 
 
-/* Tablet horizontal  */
+
 @media screen and (max-width:1150px) {
   .cart_side{
     width:60%;

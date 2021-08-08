@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
-import axios from "axios";
+
 import { doApiGet, doApiMethod, URL_API } from '../../services/apiSer';
-import { Link, useHistory } from "react-router-dom";
+import {  useHistory } from "react-router-dom";
 import { toast } from 'react-toastify';
 
 function EditUser(props) {
@@ -53,7 +53,7 @@ function EditUser(props) {
     let url = URL_API + "/users/" + editId;
     let data = await doApiMethod(url, "PUT", dataBody);
 
-    if (data.n == 1) {
+    if (data.n === 1) {
       toast.success("user updated");
       history.push("/admin/users");
     }

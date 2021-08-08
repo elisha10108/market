@@ -7,7 +7,7 @@ import CartSide from './cartSide';
 import AuthClient from './authClient';
 import { doApiMethod, URL_API } from '../../services/apiSer';
 import PayPalBtn from '../common/paypalBtn';
-function Checkout(props) {
+function Checkout() {
   let dispatch = useDispatch();
   let carts_ar = useSelector(myStore => myStore.carts_ar);
   let totalCart = 0;
@@ -21,7 +21,7 @@ function Checkout(props) {
     let url = URL_API+"/carts";
     try{
       let data = await doApiMethod(url,"POST",obj)
-      if(data.n == 1){
+      if(data.n === 1){
         toast.success("Your order been updated")
       }
       else if(data._id){
@@ -58,9 +58,9 @@ function Checkout(props) {
       <div className="container">
 
       <nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+  <ol className="breadcrumb">
+    <li className="breadcrumb-item"><a href="/">Home</a></li>
+    <li className="breadcrumb-item active" aria-current="page">Checkout</li>
   </ol>
 </nav>
         <h1>Checkout</h1>
@@ -87,7 +87,7 @@ function Checkout(props) {
                       <td>{item.name}</td>
                       <td>{item.count}</td>
                       <td>{(item.count * item.price).toFixed(2)}</td>
-                      <td className="w-25"><img src={item.img} className="w-50" /></td>
+                      <td className="w-25"><img alt={"img"} src={item.img} className="w-50" /></td>
                       <td >
                         <div className="d-flex">
                           <button onClick={() => {
@@ -110,7 +110,7 @@ function Checkout(props) {
             <div>
               <h3>Total price: {totalCart.toFixed(2)} nis</h3>
               {/* <button onClick={checkoutReal} className="btn btn-outline-info w-100">Commit buy</button> */}
-              <PayPalBtn successFunc={checkoutReal} total={totalCart.toFixed(2)} clientId="AbiWx8wSIUBrmPTxcyHs8TTCHi1k6u9vYdGP4VvOsO42snOPp6hQ0WwKDvgr3berBD8LuqrNXhZ9793I"/>
+              {/*<PayPalBtn successFunc={checkoutReal} total={totalCart.toFixed(2)} clientId="AbiWx8wSIUBrmPTxcyHs8TTCHi1k6u9vYdGP4VvOsO42snOPp6hQ0WwKDvgr3berBD8LuqrNXhZ9793I"/>*/}
 
             </div>
           </div>

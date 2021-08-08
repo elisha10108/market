@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route , Link } from 'react-router-dom';
+import {  Switch, Route , Link } from 'react-router-dom';
 import Login from './login';
 import ListProdAdmin from "./listProdAdmin";
 import HeaderAdmin from './headerAdmin';
@@ -14,23 +14,21 @@ import CartInfo from './cartInfo';
 import EditCat from "./editCat";
 import EditUser from "./editUser";
 
-function AppAdmin(props) {
+function AppAdmin() {
   return (
     <React.Fragment>
-      {/* סטריקט דואג שאנחנו באדמין ויו אר אל פנימי שלו */}
       <Route strict path={`/admin/`} component={AuthAdmin} />
       <HeaderAdmin />
       <div className="container-fluid">
         <div className="row">
-          {/* ADD TO Comp sideNavAdmin */}
           {(localStorage["tok"]) ? 
-             <nav className="col-2  admin_nav_side" style={{ minHeight: "100vh" }}>
+             <nav className="col-2  admin_nav_side" style={{ minHeight: "94.57vh" }}>
              <Link className="d-block" to="/admin/list">Products</Link>
              <Link  className="d-block" to="/admin/category">Category</Link>
              <Link  className="d-block" to="/admin/users">Users</Link>
              <Link  className="d-block" to="/admin/userCarts">Users orders</Link>
            </nav> : 
-           <nav className="col-2  admin_nav_side" style={{ minHeight: "100vh" }}>
+           <nav className="col-2  admin_nav_side" style={{ minHeight: "94.57vh" }}>
            <Link className="d-block" to="/">Home page</Link>
          </nav>
            }

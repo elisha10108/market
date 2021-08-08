@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom"
 
-function Header(props) {
+function Header() {
   let history = useHistory();
   let carts_ar = useSelector(store => store.carts_ar)
   let dispatch = useDispatch()
@@ -25,20 +25,20 @@ function Header(props) {
     }
    
   }
-  // 13:10
+
   return (
     <div className="container-fluid">
       <div className="container">
         <div className="row  align-items-center p-2">
           <div className="col-lg-6 row align-items-center text-center justify-content-center m-0">
             <Link to="/" className="col-lg-6 d-block text-center">
-              <img  src="/logo.png" className="w-100" />
+              <img  src="/images/logo.jpeg" alt={"logo"} width={"150 px"}/>
             </Link>
             <div className="col-lg-6 d-flex my-3 my-lg-0 justify-content-center">
               <input onKeyDown={(evt) => {
                 // בדיקת לחיצה אנטר במקלדת
-                if(evt.key == "Enter"){ onSearchClick() }
-              }}ref={searchRef} type="search" className="form-control" />
+                if(evt.key === "Enter"){ onSearchClick() }
+              }} ref={searchRef} type="search" className="form-control" />
               <button onClick={onSearchClick} className="btn btn-dark">
                 {searchIcon()}
               </button>
@@ -48,10 +48,9 @@ function Header(props) {
             <h3  data-tip="Open the cart" className="cart_header_icon me-2 text-success" style={{ cursor: "pointer" }} onClick={() => {
               dispatch({ type: "SHOW_HIDE_CART", flag: true })
             }}>
-              {/* פונקציה שיש בה את האייקון
-              של הקניות נמצא למטה בקובץ */}
+
               {cartIcon()}
-              {// רק אם יש מוצרים בעגלה יוצג האייקון 
+              {
                 (carts_ar.length > 0) &&
                 <div className="badge bg-danger" style={{ fontSize: "0.5em" }}>
                   {cartTotal(carts_ar).toFixed(3)}

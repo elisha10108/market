@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { doApiGet, doApiMethod, URL_API } from '../../services/apiSer';
+import {  doApiMethod, URL_API } from '../../services/apiSer';
 import { toast } from 'react-toastify';
 
-function UsersList(props) {
+function UsersList() {
   let [users_ar, setUsersAr] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function UsersList(props) {
     if(window.confirm("are you sure you want to delete?")){
       let url = URL_API + "/users/"+_id;
       let data = await doApiMethod(url,"DELETE",{});
-      if(data.n == 1){
+      if(data.n === 1){
         //refresh the table
         doApi();
       }
@@ -33,7 +33,7 @@ function UsersList(props) {
   const onChangeRole = async(_id) => {
     let url = URL_API + "/users/changeRole/"+_id;
     let data = await doApiMethod(url,"PATCH",{});
-    if(data.n == 1){
+    if(data.n === 1){
       doApi();
     }
     else{
@@ -62,7 +62,7 @@ function UsersList(props) {
         <tbody>
 
           {users_ar.map((item,i) => {
-            let classRoleBtn = (item.role == "admin") ? "btn btn-success" : "btn btn-warning"
+            let classRoleBtn = (item.role === "admin") ? "btn btn-success" : "btn btn-warning"
             return (
               <tr key={item._id}>
                 <td>{i+1}</td>

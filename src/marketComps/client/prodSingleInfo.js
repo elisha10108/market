@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { doApiGet, URL_API } from '../../services/apiSer';
@@ -19,11 +19,10 @@ function ProdSingleInfo(props) {
     let prodId = props.match.params.id;
     let url = URL_API + "/prods/single/" + prodId;
     let data = await doApiGet(url);
-
-    let url_cat = URL_API + "/categories/single/" + data.category_s_id
+    let url_cat = URL_API + "/categories/single/" + data?.category_s_id
     let dataCat = await doApiGet(url_cat);
     data.catName = dataCat.name;
-    // console.log(data);
+
     setProdData(data);
 
 
@@ -54,14 +53,12 @@ function ProdSingleInfo(props) {
         <div className="row">
           <div className="col-lg-3">
             {prodData.img?.includes("http") ?
-              <img src={prodData.img} className="w-100 img-thumbnail" />
-              // הוספנו את הקווארי סטרינג ? כדי שירפרש את התמונה כל פעם מחדש
-              // כי שמעלים תמונה היא נשארת על אותה כתובת 
-              : <img src={URL_API + prodData.img} className="w-100 img-thumbnail" />
+              <img alt={"prod img"} src={prodData.img} className="w-100 img-thumbnail" />
+              : <img alt={"prod img"} src={URL_API + prodData.img} className="w-100 img-thumbnail" />
             }
             <Link to="/" className="btn btn-dark w-100">Back to list</Link>
           </div>
-          <div class="col-lg-9 text-center text-lg-start p-3 p-lg-0">
+          <div className="col-lg-9 text-center text-lg-start p-3 p-lg-0">
             <h2>{prodData.name}</h2>
             <h4>Price per unit: {prodData.price}</h4>
             <p>Info about: {prodData.info} </p>

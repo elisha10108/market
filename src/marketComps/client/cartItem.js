@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+
 
 function CartItem(props){
   let dispatch = useDispatch();
@@ -28,7 +28,7 @@ dispatch({type:"UPDATE_THE_CART",item:item})
 
   return(
     <div style={{borderBottom:"2px solid black"}} className="p-1">
-      {item.name} : {item.count} , {item.price} Nis
+      {item.name} : {item.count.toFixed(3)} , {item.price} Nis
     <span onClick={delFromCart} className="float-end text-danger">x</span>
     
       <span onClick={reduceProd} className="float ps-5 h3 text-danger">-</span>

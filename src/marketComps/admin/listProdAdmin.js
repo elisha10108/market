@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { doApiGet, doApiMethod, URL_API } from '../../services/apiSer';
 
-function ListProdAdmin(props) {
+function ListProdAdmin() {
   let [prods_ar, setProdsAr] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function ListProdAdmin(props) {
     if(window.confirm("are you sure you want to delete?")){
       let url = URL_API + "/prods/"+_id;
       let data = await doApiMethod(url,"DELETE",{});
-      if(data.n == 1){
+      if(data.n === 1){
         //refresh the table
         doApi();
       }

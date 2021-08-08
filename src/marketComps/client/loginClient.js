@@ -59,7 +59,7 @@ function LoginClient(props) {
           <div className="mb-3">
             <label htmlFor="email" className="form-label">Email address</label>
             <input ref={emailRef} name="email" type="text" className="form-control" id="email" />
-            {/* האירור לפי השם של האינפוט מייצר לעצמו מאפיין אם יש שם טעות */}
+
             {errors.email && <span className="text-danger">Please enter valid Email</span>}
           </div>
           <div className="mb-3">

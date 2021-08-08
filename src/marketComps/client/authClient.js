@@ -6,9 +6,8 @@ function AuthClient(props){
   let history = useHistory()
 
   useEffect(()=> {
-    console.log("auth log")
-    // check if there token
-    //TODO: check if already in /admin
+
+
     if(!localStorage["tok"]){
       history.push("/login");
     }
@@ -20,11 +19,11 @@ function AuthClient(props){
   const doApi = async() => {
     let url = URL_API+"/users/myInfo";
     let data = await doApiMethod(url,"GET");
-    // check if the token is valid and the user is admin
+
     if(!data._id){
       localStorage.removeItem("tok");
       history.push("/login");
-// 13:10
+
     }
   }
 
