@@ -16,15 +16,75 @@ function CartItem(props){
    
   }
 
-  const addProd=()=>{
-item.count=item.count+1;
-dispatch({type:"UPDATE_THE_CART",item:item})
-  }
+  const addProd = () => {
+    if(item.qty >= item.count+0.500){
 
-  const reduceProd=()=>{
-    item.count = item.count-1;
+      item.count = item.count+0.500;
+    }
+
+    if(item.qty >= item.count+1){
+      if(item.type ==="1"){
+
+        item.count = item.count+0.500;
+      }
+      if(item.type ==="3"){
+        if(item.count % 2===0){
+          item.count =item.count+1;
+        }if (item.count % 2){
+          item.count = item.count+0.500;
+        }
+      }
+      if(item.type ==="2"){
+        item.count = item.count+1;
+      }
+
+    }
     dispatch({type:"UPDATE_THE_CART",item:item})
   }
+
+  const reduceProd = () => {
+    if( item.count > 0){
+      if(item.type ==="1"){
+        item.count =  item.count-0.500;
+        dispatch({type:"UPDATE_THE_CART",item:item})
+      }
+      if(item.type ==="3"){
+        if( item.count=== 0.500){
+          item.count =  item.count-0.500;
+        }
+        if( item.count !== 0.500) {
+          if (item.count % 2===0) {
+            item.count = item.count- 1;
+          }
+          if (item.count % 2) {
+            item.count = item.count- 0.500;
+          }
+        }
+      }
+
+
+      if(item.type ==="2"){
+        item.count =  item.count-1;
+        dispatch({type:"UPDATE_THE_CART",item:item})
+      }
+    }
+
+    dispatch({type:"UPDATE_THE_CART",item:item})
+  }
+
+
+
+
+
+//   const addProd=()=>{
+// item.count=item.count+1;
+// dispatch({type:"UPDATE_THE_CART",item:item})
+//   }
+//
+//   const reduceProd=()=>{
+//     item.count = item.count-1;
+//     dispatch({type:"UPDATE_THE_CART",item:item})
+//   }
 
   return(
     <div style={{borderBottom:"2px solid black"}} className="p-1">

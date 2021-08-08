@@ -8,8 +8,7 @@ import { doApiMethod, URL_API } from '../../services/apiSer';
 function SignUp(){
   const { register, handleSubmit, errors } = useForm();
   let history = useHistory()
-  // פונקציה בשיבל לקרוא לתצוגת ההודעות של הטוסט
-  // let { addToast } = useToasts();
+
 
   let emailRef = register({ required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i });
   let passRef = register({ required: true, minLength: 3 })
@@ -18,7 +17,7 @@ function SignUp(){
   let addressRef = register({ required: false, minLength: 3 })
 
   const onFormSub = (dataBody) => {
-    //dataBody -> מכיל אובייקט עם המאפיינים לפי השמות של האינפוטים והסלקטים
+
     console.log(dataBody);
    doApi(dataBody)
   }

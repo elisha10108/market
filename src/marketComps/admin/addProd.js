@@ -157,9 +157,9 @@ function AddProd() {
         <div className="mb-3">
           <label htmlFor="category" className="form-label">type</label>
           <select   ref={typeRef} name="type" id="type" className="form-select" >
-            <option  value={"kilogram"} >kilogram           </option>
-            <option  value={"gram"} >gram                   </option>
-            <option  value={"singularity"} >  singularity   </option>
+            <option  value={"1"} >משקל    </option>
+            <option  value={"2"} >יחידה   </option>
+            <option  value={"3"} >גם וגם  </option>
           </select>
           {errors.type && <span className="text-danger">There is problem, please wait... or click refresh</span>}
         </div>
