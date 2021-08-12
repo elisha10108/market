@@ -17,7 +17,7 @@ function EditCat(props) {
 
     useEffect (() =>{
         getInfoOfCatToEdit()
-    }, [])
+    })
 
 
 

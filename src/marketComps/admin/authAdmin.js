@@ -7,14 +7,13 @@ function AuthAdmin(props){
 
   useEffect(()=> {
 
-    //TODO: check if already in /admin
     if(!localStorage["tok"]){
       history.push("/admin");
     }
     else{
       doApi();
     }
-  },[props.match])
+  },[props.match ,history ])
 
   const doApi = async() => {
     let url = URL_API+"/users/checkAdmin";

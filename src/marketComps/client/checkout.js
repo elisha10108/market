@@ -1,42 +1,42 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 
 import Header from './header';
 import CartSide from './cartSide';
 import AuthClient from './authClient';
-import { doApiMethod, URL_API } from '../../services/apiSer';
-import PayPalBtn from '../common/paypalBtn';
+// import { doApiMethod, URL_API } from '../../services/apiSer';
+// import PayPalBtn from '../common/paypalBtn';
 function Checkout() {
   let dispatch = useDispatch();
   let carts_ar = useSelector(myStore => myStore.carts_ar);
   let totalCart = 0;
 
-  const checkoutReal = async(_id_paypalOrder = "00000") => {
-    let obj = {
-      carts_ar:JSON.stringify(carts_ar),
-      total:totalCart,
-      paypal_id:_id_paypalOrder
-    }
-    let url = URL_API+"/carts";
-    try{
-      let data = await doApiMethod(url,"POST",obj)
-      if(data.n === 1){
-        toast.success("Your order been updated")
-      }
-      else if(data._id){
-        toast.success("Your order on process we will contact you soon to get your money!")
-      }
-      else{
-        toast.error("there problem come back tommrow")
-      }
-    }
-    catch(err){
-      console.log(err);
-      toast.error("there problem come back tommrow 222")
-    }
+  // const checkoutReal = async(_id_paypalOrder = "00000") => {
+  //   let obj = {
+  //     carts_ar:JSON.stringify(carts_ar),
+  //     total:totalCart,
+  //     paypal_id:_id_paypalOrder
+  //   }
+  //   let url = URL_API+"/carts";
+  //   try{
+  //     let data = await doApiMethod(url,"POST",obj)
+  //     if(data.n === 1){
+  //       toast.success("Your order been updated")
+  //     }
+  //     else if(data._id){
+  //       toast.success("Your order on process we will contact you soon to get your money!")
+  //     }
+  //     else{
+  //       toast.error("there problem come back tommrow")
+  //     }
+  //   }
+  //   catch(err){
+  //     console.log(err);
+  //     toast.error("there problem come back tommrow 222")
+  //   }
 
-  }
+  // }
 
   const addProd = (item) => {
     item.count += 1;
@@ -79,7 +79,7 @@ function Checkout() {
                 </tr>
               </thead>
               <tbody>
-                {carts_ar.map((item, i) => {
+                {carts_ar?.map((item, i) => {
                   totalCart += item.count * item.price;
                   return (
                     <tr key={i}>

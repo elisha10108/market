@@ -24,7 +24,6 @@ function HeaderAdmin() {
 
             {localStorage["tok"] ? 
             <React.Fragment>
-              
               <Link to="#" onClick={logOut} className="text-white h5">Log out</Link>
             </React.Fragment>
             : ""

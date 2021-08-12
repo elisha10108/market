@@ -6,7 +6,6 @@ import {  useHistory } from "react-router-dom";
 import { toast } from 'react-toastify';
 
 function EditUser(props) {
-  let [user_ar, setUserAr] = useState([])
   let [userData, setUserData] = useState({});
 
 
@@ -23,14 +22,9 @@ function EditUser(props) {
   let addressRef = register({ required: false, minLength: 3 })
 
   useEffect(() => {
-    doApiGetUser();
+ 
     getInfoOfUserToEdit()
-  }, [])
-  const doApiGetUser = async () => {
-    let url = URL_API + "/users"
-    let data = await doApiGet(url);
-    setUserAr(data);
-  }
+  })
 
   const getInfoOfUserToEdit = async () => {
     let editId = props.match.params.id;

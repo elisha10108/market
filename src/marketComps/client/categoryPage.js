@@ -22,6 +22,7 @@ function CategoryPage(props) {
   }, [props.match])
 
   const doApi = async () => {
+    console.log(props);
     let url1 = URL_API + "/categories/single/" + props.match.params.id
     let dataCat = await doApiGet(url1)
     setCat(dataCat)
@@ -45,7 +46,7 @@ function CategoryPage(props) {
         </h1>
         <div className="breadcrumb">
           <Link className="breadcrumb-item" to="/">Home</Link>
-          <a className="breadcrumb-item active" href="#">{cat.name}</a>
+          <h6 className="breadcrumb-item active" href="#">{cat.name}</h6>
         </div>
         <h3 className="text-center">{cat.info}</h3>
         <div className="text-center row">

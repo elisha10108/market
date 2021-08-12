@@ -9,30 +9,26 @@ import { Link } from 'react-router-dom';
 function LoginClient(props) {
   const { register, handleSubmit, errors } = useForm();
   let history = useHistory()
-  // פונקציה בשיבל לקרוא לתצוגת ההודעות של הטוסט
-  // let { addToast } = useToasts();
+
 
   let emailRef = register({ required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i });
   let passRef = register({ required: true, minLength: 3 })
 
   const onFormSub = (dataBody) => {
-    //dataBody -> מכיל אובייקט עם המאפיינים לפי השמות של האינפוטים והסלקטים
-    console.log(dataBody);
+
     doApi(dataBody)
   }
-  // 13:15
+
   const doApi = async (dataBody) => {
     let url = URL_API + "/users/login";
-    // dataBody > אובייקט שמכיל את האימייל והסיסמא מהטופס
     let data = await doApiMethod(url, "POST", dataBody);
-    console.log(data);
-    // login success
+
     if (data.token) {
       localStorage.setItem("tok", data.token);
 
       let url2 = URL_API + "/users/myInfo"
       let userInfo = await doApiMethod(url2, "GET");
-
+console.log(userInfo);
       // פונקציה שקוראת להודעת טוסט , צבע ירוק ושיעלם
       toast.success("You logged in!");
       localStorage.setItem("userName", userInfo.name);

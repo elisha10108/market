@@ -8,7 +8,7 @@ function CartInfo(props) {
 
   useEffect(() => {
     getProductInfoApi();
-  }, []);
+  });
 
   const getProductInfoApi = async () => {
     let cartId = props.match.params.id;
@@ -45,9 +45,9 @@ function CartInfo(props) {
       <h1>Info about order:</h1>
       <div>
         <h3>Buyer info:</h3>
-        <div>Name: {userInfo?.name}</div>
-        <div>Phone: {userInfo?.phone}</div>
-        <div>Address: {userInfo?.address}</div>
+        <div>Name: {userInfo.name}</div>
+        <div>Phone: {userInfo.phone}</div>
+        <div>Address: {userInfo.address}</div>
       </div>
       <hr />
       <div>

@@ -51,7 +51,7 @@ function Header() {
 
               {cartIcon()}
               {
-                (carts_ar.length > 0) &&
+                (carts_ar?.length > 0) &&
                 <div className="badge bg-danger" style={{ fontSize: "0.5em" }}>
                   {cartTotal(carts_ar).toFixed(3)}
                 </div>

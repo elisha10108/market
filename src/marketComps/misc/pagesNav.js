@@ -15,8 +15,8 @@ function PageNav(props){
   let [pages,setPages] = useState(0)
 
   useEffect(() => {
-    doApi();
-  },[])
+  doApi();
+  })
 
   const doApi = async() => {
     console.log(urlPageApi)

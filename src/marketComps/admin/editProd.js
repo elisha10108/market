@@ -24,12 +24,14 @@ function EditProd(props) {
   let commentsRef = register({});
   let catRef = register({ required: true });
   let typeRef =register({});
+
+
   useEffect(() => {
     doApiGetCat();
     getInfoOfProdToEdit()
-  }, [])
+  })
 
-  // COLLECT category from db
+ 
   const doApiGetCat = async () => {
     let url = URL_API + "/categories"
     let data = await doApiGet(url);
@@ -49,7 +51,6 @@ function EditProd(props) {
     console.log(dataBody);
 
     doApi(dataBody)
-    // doApi(dataBody);
   }
 
   const doApi = async (dataBody) => {
@@ -57,7 +58,7 @@ function EditProd(props) {
     let url = URL_API + "/prods/" + editId;
     let data = await doApiMethod(url, "PUT", dataBody);
     // if succed we will get n = 1
-    // console.log(data);
+    console.log(data);
     if (data.n === 1) {
       toast.success("prod updated");
       history.push("/admin/list");
@@ -122,13 +123,13 @@ function EditProd(props) {
           <label htmlFor="image" className="form-label">Image:</label>
           <input defaultValue={prodData.img} ref={imageRef} name="img" type="text" className="form-control" id="image" />
           {errors.img && <span className="text-danger">Enter valid image higer than 0</span>}
-          <label>Upload image from computer</label>
+          <label> ,upload imagfrom computer</label>
 
-          {prodData.img?.includes("http") ? 
+          {/* {(prodData.img.includes("http")) ? 
           <img alt={"img"} src={prodData.img} height="100" />
 
             : <img alt={"img"} src={URL_API+prodData.img+"?"+Date.now()} height="100" />
-            }
+            } */}
           <br/>
           <input ref={fileRef} type="file" onChange={uploadFile} className="me-3" />
         </div>
@@ -163,9 +164,9 @@ function EditProd(props) {
         <div className="mb-3">
           <label htmlFor="category" className="form-label">Category</label>
           <select   ref={typeRef} name="type" id="type" className="form-select" >
-                  <option  value={"kilogram"} >kilogram           </option>
-                  <option  value={"gram"} >gram                   </option>
-                  <option  value={"singularity"} >  singularity   </option>
+          <option  value={"1"} >משקל    </option>
+            <option  value={"2"} >יחידה   </option>
+            <option  value={"3"} >גם וגם  </option>
           </select>
           {errors.type && <span className="text-danger">There is problem, please wait... or click refresh</span>}
         </div>
