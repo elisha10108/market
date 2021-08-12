@@ -39,7 +39,6 @@ function HomeSearch(props) {
             </span>
         </h2>
         {loadingShow && <div className="text-center"><img alt={"loading"} src="/public/images/loading.gif" /></div>}
-         {/* במידה וסיים לקבל מידע והמערך הריק יציג הודעת אי מציאת מוצרים */}
         {!loadingShow && prods_ar.length===0 && <div className="text-center">Not found products...</div>}
         <div className="row mb-5">
           {prods_ar.map(item => {

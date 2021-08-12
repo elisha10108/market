@@ -12,7 +12,6 @@ function UserCartsOrders(){
   const doApiGetCarts = async() => {
     let url = URL_API+"/carts/allCarts?reverse=yes";
     let data = await doApiMethod(url,"GET");
-    // console.log(data)
     setCarts(data);
   }
 
@@ -21,11 +20,11 @@ function UserCartsOrders(){
       case "complete":
         return "green";
 
-      case "pending":
-        return "grey";
-
-      case "canceled":
-        return "red";
+        
+        case "canceled":
+          return "red";
+          default: case "pending":
+          return "grey";
 
     }
   }

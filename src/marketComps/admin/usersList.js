@@ -21,7 +21,7 @@ function UsersList() {
       let url = URL_API + "/users/"+_id;
       let data = await doApiMethod(url,"DELETE",{});
       if(data.n === 1){
-        //refresh the table
+       
         doApi();
       }
       else{
