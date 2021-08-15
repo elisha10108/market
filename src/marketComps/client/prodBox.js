@@ -30,29 +30,34 @@ function ProdBox(props) {
     if(item.qty >= countProd+0.500){
       setCountProd(countProd+0.500);
       item.count = countProd+0.500;
+      dispatch({type:"UPDATE_THE_CART", item:item})
     }
 
     if(item.qty >= countProd+1){
       if(item.type ===1){
         setCountProd(countProd+0.500);
         item.count = countProd+0.500;
+        dispatch({type:"UPDATE_THE_CART", item:item})
       }
       if(item.type ===3){
         if(Color === "btn btn-info"){
           setCountProd(countProd+1);
           item.count = countProd+1;
+          dispatch({type:"UPDATE_THE_CART", item:item})
               }if (Color === "btn btn-success"){
           setCountProd(countProd+0.500);
           item.count = countProd+0.500;
+          dispatch({type:"UPDATE_THE_CART", item:item})
         }
       }
       if(item.type ===2){
         setCountProd(countProd+1);
         item.count = countProd+1;
+        dispatch({type:"UPDATE_THE_CART", item:item})
       }
 
   }
-    dispatch({type:"UPDATE_THE_CART", item:item})
+   
   }
 
   const reduceProd = () => {
@@ -94,7 +99,7 @@ function ProdBox(props) {
 
 
  const myButton = () => {
-    if(item.type ==="3"){
+    if(item.type ===3){
    if(!isGreen){
      setIsGreen(true)
      setColor("btn btn-success")
