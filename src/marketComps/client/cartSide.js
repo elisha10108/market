@@ -39,7 +39,7 @@ function CartSide(props) {
           <div className="cart_items">
             {carts_ar?.map(item => {
            { 
-            if (item.count > 0) {
+            if (item?.count > 0) {
                 total += item.price * item.count;}
                 return (
                   

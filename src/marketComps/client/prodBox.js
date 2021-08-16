@@ -13,7 +13,7 @@ function ProdBox(props) {
   let [word,setWord]=useState("יחידה")
   let [countProd,setCountProd] = useState(0)
   let carts_ar = useSelector(mystore => mystore.carts_ar)
-  let flag =useSelector(mystore => mystore.flagP)
+  // let flag =useSelector(mystore => mystore.flagP)
 
   let item = props.item;
 
@@ -104,14 +104,14 @@ function ProdBox(props) {
      setIsGreen(true)
      setColor("btn btn-success")
      setWord("משקל")
-     dispatch({type:"UPDATE_FLAG",flag:true})
-     console.log(flag);
+    //  dispatch({type:"UPDATE_FLAG",flag:true})
+    //  console.log(flag);
    }
    else{
      setIsGreen(false)
      setColor("btn btn-info")
      setWord("יחידה")
-     dispatch({type:"UPDATE_FLAG",flag:false})
+    //  dispatch({type:"UPDATE_FLAG",flag:false})
    }
  }
 
